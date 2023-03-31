@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SideCart = () => {
+const SideCart = ({readTime}) => {
     return (
         <div>
-            this is side card
+            bgdgd
         </div>
     );
 };

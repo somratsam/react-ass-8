@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import BlogCart from '../BlogCart/BlogCart';
 
-const Home = () => {
+const Home = ({ handleReadTime }) => {
     const [blogs, setBlogs] = useState([])
     useEffect(() => {
         fetch("blog.json")
@@ -11,9 +11,9 @@ const Home = () => {
     }, [])
 
     return (
-        <div className='blog-container'>
+        <div className='home-container'>
             {
-                blogs.map((blog) => (<BlogCart
+                blogs.map((blog) => (<BlogCart handleReadTime={handleReadTime}
                     key={blog.id}
                     blog={blog}></BlogCart>))
             }

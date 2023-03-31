@@ -8,7 +8,21 @@ import Home from './components/Home/Home';
 import SideCart from './components/sideCart/SideCart';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [readTime, setReadTime] = useState("")
+  const handleReadTime = (time) => {
+   const previousReadTime =(localStorage.getItem("readTine"))
+   if (previousReadTime) {
+    // const sum = previousReadTime + time
+    // localStorage.setItem("readTime", sum)
+    const total = previousReadTime + time
+    localStorage.setItem("readTime", total )
+    setReadTime(total)
+   }
+   else{
+    localStorage.setItem("readTime", time)
+    setReadTime(time)
+   }
+  }
 
   return (
     <div className="App">
@@ -17,10 +31,10 @@ function App() {
       </div>
       <div className="main-section d-flex container">
         <div className="home-container col-md-8">
-          <Home></Home>
+          <Home handleReadTime = {handleReadTime}></Home>
         </div>
         <div className="side-cart col-md-4 card">
-          <SideCart></SideCart>
+          <SideCart readTime = {readTime}></SideCart>
         </div>
       </div>
 
