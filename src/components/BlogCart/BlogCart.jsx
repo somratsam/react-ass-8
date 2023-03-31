@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 
 const BlogCart = ({ blog }) => {
 
@@ -16,21 +18,17 @@ const BlogCart = ({ blog }) => {
                                 <p><strong>{blog.name}</strong></p>
                                 <p><small>{blog.date}</small></p>
                             </div>
-
-
                         </div>
                         <div className="read-time">
-                            10 min 45 sec
+                            <small>{blog.readTime} <FontAwesomeIcon icon={faBookmark} /></small>
                         </div>
                     </div>
-
-
-                 <div className="card-title">
-                    <p className='fw-bold'>{blog.blogTitle}</p>
-                 </div>
-                <Button variant="primary">Mark as unread</Button>
-            </Card.Body>
-        </Card>
+                    <div className="card-title">
+                        <p className='fw-bold'>{blog.blogTitle}</p>
+                    </div>
+                    <Button variant="primary">Mark as unread</Button>
+                </Card.Body>
+            </Card>
         </div >
     );
 };
