@@ -4,7 +4,8 @@ import Card from 'react-bootstrap/Card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 
-const BlogCart = ({ blog, handleReadTime }) => {
+const BlogCart = ({ blog, handleReadTime, handleBookmarkClick }) => {
+    console.log(blog);
 
     return (
         <div>
@@ -20,13 +21,14 @@ const BlogCart = ({ blog, handleReadTime }) => {
                             </div>
                         </div>
                         <div className="read-time">
-                            <small>Read time:{blog.readTime} <FontAwesomeIcon icon={faBookmark} /></small>
+                        <small style={{ cursor: 'pointer' }} onClick={() => handleBookmarkClick(blog.blogTitle)}>Read time:{blog.readTime} <FontAwesomeIcon icon={faBookmark} /></small>
+
                         </div>
                     </div>
                     <div className="card-title">
                         <p className='fw-bold'>{blog.blogTitle}</p>
                     </div>
-                    <p className='text-decoration-underline text-success' onClick={() => handleReadTime(blog.readTime)}>Mark as read</p>
+                    <p style={{ cursor: 'pointer' }} className='text-decoration-underline text-success ' onClick={() => handleReadTime(blog.readTime)}>Mark as read</p>
                     
                 </Card.Body>
             </Card>

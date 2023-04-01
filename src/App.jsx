@@ -1,33 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/Header/Header'
+import React, { useState } from 'react';
+import Header from './components/Header/Header';
 import Home from './components/Home/Home';
-
 import ReactBlog from './components/ReactBlog/ReactBlog';
-import CalculateArea from './components/CalculateArea/CalculateArea';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
-  const [readTime, setReadTime] = useState(0)
+  const [readTime, setReadTime] = useState(0);
+  const [bookmarkCount, setBookmarkCount] = useState(0);
+  const [bookmarkedTitles, setBookmarkedTitles] = useState([]);
 
   const handleReadTime = (time) => {
-    console.log(time);
-    const previousReadTime = JSON.parse(localStorage.getItem("readTime"))
+    const total = readTime + time;
+    setReadTime(total);
+  };
 
-    if (previousReadTime) {
-      const total = previousReadTime + time
-      localStorage.setItem("readTime", total)
+  const handleBookmarkClick = (title) => {
+    setBookmarkCount(bookmarkCount + 1);
+    setBookmarkedTitles([...bookmarkedTitles, title]);
+  };
 
-      setReadTime(total)
-    }
-    else {
-      localStorage.setItem("readTime", time)
-      setReadTime(time)
-    }
-  }
   return (
     <div className="App">
       <div className="header m-auto mb-3 container">
@@ -35,19 +29,28 @@ function App() {
       </div>
       <div className="main-section d-flex container">
         <div className="home-container container">
-          <Home handleReadTime={handleReadTime}></Home>
+          <Home
+            handleReadTime={handleReadTime}
+            handleBookmarkClick={handleBookmarkClick}
+            bookmarkedTitles={bookmarkedTitles}
+          ></Home>
         </div>
-        <div className='container'>
-          <CalculateArea readTime={readTime}></CalculateArea>
+        <div className="container">
+          <div>
+            <Sidebar 
+             readTime={readTime}
+             bookmarkCount={bookmarkCount}
+             bookmarkedTitles={bookmarkedTitles}></Sidebar>
+           
+          </div>
+
+          <div>
+            <ReactBlog></ReactBlog>
+          </div>
         </div>
-
       </div>
-      <div className='container'>
-        <ReactBlog></ReactBlog>
-      </div>
-
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
