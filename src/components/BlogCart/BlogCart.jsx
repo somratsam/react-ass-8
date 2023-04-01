@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 
 const BlogCart = ({ blog, handleReadTime, handleBookmarkClick }) => {
-    console.log(blog);
 
     return (
         <div className='container'>
