@@ -3,7 +3,7 @@ import React from 'react';
 const SideCart = ({readTime}) => {
     return (
         <div>
-            bgdgd
+           bangladesh
         </div>
     );
 };

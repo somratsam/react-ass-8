@@ -7,22 +7,28 @@ import Header from './components/Header/Header'
 import Home from './components/Home/Home';
 import SideCart from './components/sideCart/SideCart';
 
+
 function App() {
-  const [readTime, setReadTime] = useState("")
+const [readTime, setReadTime] = useState("")
+
   const handleReadTime = (time) => {
-   const previousReadTime =(localStorage.getItem("readTine"))
-   if (previousReadTime) {
-    // const sum = previousReadTime + time
-    // localStorage.setItem("readTime", sum)
-    const total = previousReadTime + time
-    localStorage.setItem("readTime", total )
-    setReadTime(total)
-   }
-   else{
-    localStorage.setItem("readTime", time)
-    setReadTime(time)
-   }
+const previousReadTime = JSON.parse(localStorage.getItem("readTime"))
+
+if (previousReadTime) {
+  const total = previousReadTime + time
+  localStorage.setItem("readTime", total)
+
+  setReadTime(total)
+}
+else{
+  localStorage.setItem("readTime", time)
+  setReadTime(time)
+}
+
   }
+  
+   
+
 
   return (
     <div className="App">
