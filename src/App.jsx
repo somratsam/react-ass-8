@@ -27,7 +27,7 @@ function App() {
       <div className="header m-auto mb-3 container">
         <Header></Header>
       </div>
-      <div className="main-section d-flex container">
+      <div className="container d-flex">
         <div className="home-container container">
           <Home
             handleReadTime={handleReadTime}
@@ -37,14 +37,14 @@ function App() {
         </div>
         <div className="container">
           <div>
-            <Sidebar 
-             readTime={readTime}
-             bookmarkCount={bookmarkCount}
-             bookmarkedTitles={bookmarkedTitles}></Sidebar>
-           
+            <Sidebar
+              readTime={readTime}
+              bookmarkCount={bookmarkCount}
+              bookmarkedTitles={bookmarkedTitles}></Sidebar>
+
           </div>
 
-          <div>
+          <div className='container pt-3'>
             <ReactBlog></ReactBlog>
           </div>
         </div>
@@ -54,3 +54,4 @@ function App() {
 }
 
 export default App;
+

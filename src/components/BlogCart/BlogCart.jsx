@@ -8,7 +8,7 @@ const BlogCart = ({ blog, handleReadTime, handleBookmarkClick }) => {
     console.log(blog);
 
     return (
-        <div>
+        <div className='container'>
             <Card style={{ width: '45rem' }}>
                 <Card.Img variant="top" src={blog.blogImage} />
                 <Card.Body>
@@ -21,7 +21,7 @@ const BlogCart = ({ blog, handleReadTime, handleBookmarkClick }) => {
                             </div>
                         </div>
                         <div className="read-time">
-                        <small style={{ cursor: 'pointer' }} onClick={() => handleBookmarkClick(blog.blogTitle)}>Read time:{blog.readTime} <FontAwesomeIcon icon={faBookmark} /></small>
+                            <small style={{ cursor: 'pointer' }} onClick={() => handleBookmarkClick(blog.blogTitle)}>Read time:{blog.readTime} <FontAwesomeIcon icon={faBookmark} /></small>
 
                         </div>
                     </div>
@@ -29,7 +29,7 @@ const BlogCart = ({ blog, handleReadTime, handleBookmarkClick }) => {
                         <p className='fw-bold'>{blog.blogTitle}</p>
                     </div>
                     <p style={{ cursor: 'pointer' }} className='text-decoration-underline text-success ' onClick={() => handleReadTime(blog.readTime)}>Mark as read</p>
-                    
+
                 </Card.Body>
             </Card>
         </div >
