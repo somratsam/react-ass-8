@@ -5,43 +5,45 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header/Header'
 import Home from './components/Home/Home';
-import SideCart from './components/sideCart/SideCart';
+
+import ReactBlog from './components/ReactBlog/ReactBlog';
+import CalculateArea from './components/CalculateArea/CalculateArea';
 
 
 function App() {
-const [readTime, setReadTime] = useState("")
+  const [readTime, setReadTime] = useState(0)
 
   const handleReadTime = (time) => {
-const previousReadTime = JSON.parse(localStorage.getItem("readTime"))
+    console.log(time);
+    const previousReadTime = JSON.parse(localStorage.getItem("readTime"))
 
-if (previousReadTime) {
-  const total = previousReadTime + time
-  localStorage.setItem("readTime", total)
+    if (previousReadTime) {
+      const total = previousReadTime + time
+      localStorage.setItem("readTime", total)
 
-  setReadTime(total)
-}
-else{
-  localStorage.setItem("readTime", time)
-  setReadTime(time)
-}
-
+      setReadTime(total)
+    }
+    else {
+      localStorage.setItem("readTime", time)
+      setReadTime(time)
+    }
   }
-  
-   
-
-
   return (
     <div className="App">
       <div className="header m-auto mb-3 container">
         <Header></Header>
       </div>
       <div className="main-section d-flex container">
-        <div className="home-container col-md-8">
-          <Home handleReadTime = {handleReadTime}></Home>
+        <div className="home-container container">
+          <Home handleReadTime={handleReadTime}></Home>
         </div>
-        <div className="side-cart col-md-4 card">
-          <SideCart readTime = {readTime}></SideCart>
+        <div className='container'>
+          <CalculateArea readTime={readTime}></CalculateArea>
         </div>
+
+      </div>
+      <div className='container'>
+        <ReactBlog></ReactBlog>
       </div>
 
     </div>

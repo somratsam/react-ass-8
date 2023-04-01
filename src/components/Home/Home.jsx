@@ -13,9 +13,10 @@ const Home = ({ handleReadTime }) => {
     return (
         <div className='home-container'>
             {
-                blogs.map((blog) => (<BlogCart handleReadTime={handleReadTime}
-                    key={blog.id}
-                    blog={blog}></BlogCart>))
+                blogs.map((blog) => (
+                    <BlogCart handleReadTime={handleReadTime}
+                        key={blog.id}
+                        blog={blog}></BlogCart>))
             }
         </div>
     );
